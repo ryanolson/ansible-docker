@@ -43,8 +43,6 @@
 - name: Add user(s) to docker group
   user: 
       name={{ item }} 
-      group=docker 
-      state=present
+      groups=docker 
+      append=yes
   with_items: "{{ docker_users }}"
-  when: docker_users is defined
-
