@@ -12,7 +12,7 @@
 
 # Use DOCKER_OPTS to modify the daemon startup options.
 #DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4"
-DOCKER_OPTS="--bip={{ docker_bridge_ip }} --fixed-cidr={{ docker_container_ip }} {% for dns in      docker_dns %} --dns {{ dns }} {% endfor %}"
+DOCKER_OPTS="--bip={{ docker_bridge_ip }} --fixed-cidr={{ docker_container_ip }} {% for dns in docker_dns %} --dns {{ dns }} {% endfor %} --storage-driver={{ docker_storage_driver }}"
 
 # If you need Docker to use an HTTP proxy, it can also be specified here.
 #export http_proxy="http://127.0.0.1:3128/"
