@@ -46,3 +46,17 @@
       groups=docker 
       append=yes
   with_items: "{{ docker_users }}"
+
+- name: Create Certificate Directories
+  file:
+    path: "/etc/docker/certs.d/{{ item.host }}"
+    state: directory
+  with_items: "{{ docker_certificates }}"
+  when: docker_certificates is defined
+
+- name: Install Certificates
+  copy:
+    content: "{{ item.certificate }}"
+    dest: "/etc/docker/certs.d/{{ item.host }}/ca.crt"
+  with_items: "{{ docker_certificates }}"
+  when: docker_certificates is defined
