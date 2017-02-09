@@ -6,7 +6,8 @@
 - name: create docker config
   template: src=network.j2 dest={{ docker_systemd_path }}/{{ docker_systemd_conf }}
   notify: 
-  - docker-stop
+  - docker-stop-sysd
   - docker-remove-bridge
   - docker-reload-daemon
-  - docker-restart
+  - docker-restart-sysd
+  - docker-start-sysd

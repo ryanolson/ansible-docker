@@ -5,3 +5,4 @@
   notify: 
     - docker-remove-bridge
     - docker-restart
+    - docker-start

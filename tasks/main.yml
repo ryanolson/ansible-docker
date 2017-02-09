@@ -37,9 +37,6 @@
 
 - meta: flush_handlers
 
-- name: docker | start
-  service: name=docker state=started
-
 - name: Add user(s) to docker group
   user: 
       name={{ item }} 
@@ -52,7 +49,6 @@
     path: "/etc/docker/certs.d/{{ item.host }}"
     state: directory
   with_items: "{{ docker_certificates }}"
-  when: docker_certificates is defined
 
 - name: Install Certificates
   copy:
